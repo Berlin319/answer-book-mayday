@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>答案之书</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .canvas {
+            position: relative;
+            width: 100vw; /* 填满整个屏幕宽度 */
+            height: 100vh; /* 填满整个屏幕高度 */
+            background-color: #ADD8E6; /* 浅蓝色 */
+        }
+        .answer-container {
+            position: absolute;
+            top: 44px;
+            left: 32px;
+            width: 600px; /* 设置为600px以适应两行显示 */
+            height: 190px;
+            color: black;
+            font-family: SimSun, serif;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 25px; /* 设置行高以便两行显示 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 显示两行 */
+            -webkit-box-orient: vertical;
+        }
+        .explanation {
+            position: absolute;
+            top: calc(44px + 190px + 22px);
+            left: 32px;
+            font-family: SimSun, serif;
+            font-size: 16px;
+            line-height: 26px;
+            color: darkgray;
+        }
+        .button {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            padding: 0 20px;
+            height: 32px;
+            border-radius: 16px;
+            background-color: #1C1C1C;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="answer-container" id="answer"></div>
+        <div class="explanation" id="explanation"></div>
+        <button class="button" onclick="generateAnswer()">默念问题、寻找答案</button>
+    </div>
+
+    <script>
+        const answers = [
+            "夜已央，天已亮，白昼隐没了星光。\n而我们，都终将，将葬身历史的洪荒。",
+            "经过了漫长的等候，梦想是梦想我还是一个我。那时间忘记挽留最美时刻，不经意匆匆地流过。",
+            "爱情本来就是种考验，当耗尽所有激情与好奇，上天给人们一些小甜蜜和一卡车难题。",
+            "常常我闭上常眼睛听到了海的呼吸，是你，温柔的蓝色潮汐告诉我没有关系",
+            "这一生志愿只要平凡快乐",
+            "再吃一颗苹果",
+            "你问我全世界哪里最美\n答案是你身边",
+            "少年回头望 笑我还不快跟上",
+            "就算会有一天没人与我合唱至少在我的心中还有个尚未崩坏的地方",
+            "坚持对我来说就是以刚克刚",
+            "也许我这一杆 又没办法进球",
+            "为你战斗 永不投降",
+            "在这一秒我一定要说\n就算失败也不沉默"
+        ];
+
+        function generateAnswer() {
+            const randomIndex = Math.floor(Math.random() * answers.length);
+            document.getElementById('answer').innerText = answers[randomIndex];
+            document.getElementById('explanation').innerText = "遇到问题、犹豫不决时，试试拿走这个简单的答案或暗示。";
+        }
+    </script>
+</body>
+</html>
